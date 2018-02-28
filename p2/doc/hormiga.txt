@@ -1,0 +1,14 @@
+la rejillas tiene que ser infinita
+puede haber más de un color
+* Máquina
+* Hormiga
+* Rejilla
+Class Hormiga{
+	public:
+	movimiento(ColorCasilla);
+
+	private:
+	Direccion D;
+}
+
+Contador de pasos en -> Máquina
