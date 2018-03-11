@@ -19,8 +19,12 @@ namespace AEDA{
 			matriz_t matrizColores_;
 			int altura_;
 			int anchura_;
-			void redimAltura(int, int);
-			void redimAnchura(int);
+			int alturaOrig_;
+			int anchuraOrig_;
+			void filaArriba(void);
+			void filaAbajo(void);
+			void columIzda(void);
+			void columDerc(void);
 			void copiaRejilla(matriz_t); // copia la rejilla y la centra
 			conjCodColor_t colores_;
 		public:
@@ -33,6 +37,7 @@ namespace AEDA{
 			int obtAltura(void){ return altura_; }
 			int obtAnchura(void){ return anchura_; }
 			char obtColor(int, int);
+			void compLimite(int, int);
 	};
 }
 #endif	// REJILLA_H

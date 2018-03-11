@@ -12,21 +12,41 @@ namespace AEDA{
 
 	Rejilla::Rejilla(int altura, int anchura):
 		altura_(altura),
-		anchura_(anchura)
+		anchura_(anchura),
+		alturaOrig_(altura),
+		anchuraOrig_(anchura)
 	{
 		matrizColores_.resize(altura_);
 		for(int i = 0; i < altura_; i++)
 			matrizColores_[i].resize(anchura_);
 	}
 
-	void Rejilla::redimAltura(int nuevaAltura, int nuevaAnchura){
-		matriz_t mcopia = matrizColores_;
-		matrizColores_.resize(nuevaAltura);
-		altura_ = nuevaAltura;
-		for(int i = 0; i < altura_; i++)
-			matrizColores_[i].resize(nuevaAnchura);
-		anchura_ = nuevaAnchura;
-		copiaRejilla(mcopia);
+	void Rejilla::filaArriba(void){
+		std::vector<int> nVector;
+		matrizColores_.insert(matrizColores_.begin(), nVector);
+		++altura_;
+		for (int j = 0; j < anchura_; j++)
+			matrizColores_[0][j] = 0;
+	}
+
+	void Rejilla::filaAbajo(void){
+		std::vector<int> nVector;
+		matrizColores_.push_back(nVector);
+		++altura_;
+		for (int j = 0; j < anchura_; j++)
+			matrizColores_[altura_ - 1][j] = 0;
+	}
+
+	void Rejilla::columIzda(void){
+		for (int i = 0; i < altura_; i++)
+			matrizColores_[i].insert(matrizColores_[i].begin(), 0);
+		++anchura_;
+	}
+
+	void Rejilla::columDerc(void){
+		for (int i = 0; i < altura_; i++)
+			matrizColores_[i].push_back(0);
+		++anchura_;
 	}
 
 	void Rejilla::cargarColores(std::istream &scolores){
@@ -51,12 +71,15 @@ namespace AEDA{
 			}
 	}
 
-	void Rejilla::redimAnchura(int anchura){
-		matriz_t mcopia = matrizColores_;
-		for(int i = 0; i < altura_; i++)
-			matrizColores_[i].resize(anchura);
-		anchura_ = anchura;
-		copiaRejilla(mcopia);
+	void Rejilla::compLimite(int i, int j){
+		if (altura_ < i)
+			filaAbajo();
+		else if (anchura_ < j)
+			columDerc();
+		else if (alturaOrig_ - altura_ > i)
+			filaArriba();
+		else if (anchuraOrig_ - anchura_ > j)
+			columIzda();
 	}
 
 	char Rejilla::obtColor(int i, int j){

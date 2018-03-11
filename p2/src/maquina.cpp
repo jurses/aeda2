@@ -24,6 +24,9 @@ namespace AEDA{
 			int pj = vHormigas_[i].devPosJ();
 			rej_->ponColor(pi, pj, vHormigas_[i].devColor(colorR));
 			vHormigas_[i].mover(colorR);
+			pi = vHormigas_[i].devPosI();
+			pj = vHormigas_[i].devPosJ();
+			rej_->compLimite(pi, pj);
 		}
 	}
 

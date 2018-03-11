@@ -1,0 +1,7 @@
+bin/
+*.zip
+*.o
+*.out
+*.exe
+pruebas/
+.*.swp
