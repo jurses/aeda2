@@ -6,10 +6,14 @@
 
 #include <curses.h>
 #include <string.h>
+#include <cstdarg.h>
 
 namespace MENU{
-	int mostrarMenu(const **char, int, int, int);
-	void ventEmergente(const char*);
+	int mostrarMenu(const char *, const **char, int, int, int);
+	void ventEmergente(const char, const char *);
+
+	// ventana que recoge numeros enteros
+	void ventanaRecNumE(const char *, const char *, int, ...);
 }
 
 #endif	// MENU_H

@@ -1,8 +1,8 @@
 #include "menu.hpp"
 namespace MENU{
-	void ventEmergente(const char *cad, const char *tit){
+	void ventEmergente(const char *tit, const char *cad){
 		curs_set(0);
-		WINDOW *vent = newwin(5, strlen(cad) + 2, CENTROY(getmaxy(stdscr), 5), CENTROX(getmaxx(stdscr), strlen(cad) + 2));
+		WINDOW *vent = newwin(5, strlen(cad) + 4, CENTROY(getmaxy(stdscr), 5), CENTROX(getmaxx(stdscr), strlen(cad) + 4));
 		keypad(vent, true);
 		refresh();
 		wrefresh(menuVent);
@@ -14,7 +14,27 @@ namespace MENU{
 		wgetch(vent);
 		curs_set(1);
 	}
-	int mostrarMenu(const **char opciones_c, int args, int y, int x){
+
+	void ventanaRecNumE(const char *tit, const char *cad, int args, ...){
+		WINDOW *vent = newwin(5, strlen(cad) + 4, CENTROY(getmaxy(stdscr), 5), CENTROX(getmaxx(stdscr), strlen(cad) + 4));
+		box(win, 0, 0);
+		keypad(vent, true);
+		refresh();
+		wrefresh(menuVent);
+		
+		mvwprintw(vent, 2, 2, cad);
+		if (tit)
+			mvwprintw(vent, 0, 2, tit);
+
+		mvwprintw(win, 2, 3, "%s", cad);
+		va_list vl;
+		va_start(vl, args);
+		wmove(win, 3, 3);
+		vwscanw(win, "%d")
+	}
+
+
+	int mostrarMenu(const char * tit, const **char opciones_c, int args, int y, int x){
 		curs_set(0);
 		int maxSize = 0;
 		for (int i = 0; i < args; i++)
@@ -33,6 +53,9 @@ namespace MENU{
 		refresh();
 		wrefresh(menuVent);
 		box(menuVent, 0, 0);
+
+		if (tit)
+			mvwprintw(vent, 0, 2, tit);
 
 		int sobresaltado = 0;
 		int eleccion = 0;
@@ -64,4 +87,5 @@ namespace MENU{
 		} while (eleccion == 'q');
 	}
 	curs_set(1);
+	delwin(menuVent);
 }

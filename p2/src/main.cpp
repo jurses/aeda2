@@ -30,7 +30,7 @@ int main(int argc, char **argv){
 										"Empezar Partida"
 										};
 	do{
-		int opcion = MENU::mostrarMenu(opciones1_c, TOTAL, 0, 0);
+		int opcion = MENU::mostrarMenu("Menú ppal.", opciones1_c, TOTAL, 0, 0);
 		bool rej = false;
 		switch (opcion){
 			case partDefecto:
