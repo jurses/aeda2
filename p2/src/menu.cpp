@@ -27,10 +27,11 @@ namespace MENU{
 			mvwprintw(vent, 0, 2, tit);
 
 		mvwprintw(win, 2, 3, "%s", cad);
-		va_list vl;
-		va_start(vl, args);
-		wmove(win, 3, 3);
-		vwscanw(win, "%d")
+
+		char input[256];
+		wscanw(win, "%[^\n]", input);
+
+		for (int)
 	}
 
 
