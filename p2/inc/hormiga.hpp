@@ -50,6 +50,13 @@ namespace AEDA{
 			void mover(int);
 			int devColor(int);
 	};
+
+	class IDDI : public Hormiga{
+		public:
+			IDDI(int, int);
+			void mover(int);
+			int devColor(int);
+	};
 }
 
 #endif	// HORMIGA_H

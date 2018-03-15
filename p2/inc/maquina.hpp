@@ -27,8 +27,8 @@ namespace AEDA{
 			void cargarHormigaF(std::istream &);	// insertar una nueva hormiga en i, j
 			void cargarColores(std::istream &);
 			void desplazamiento(int, int);	// desplazamiento por la rejilla (paralaje)
-			void sigGen(void);
-			std::string devHormiguero(void);
+			virtual void sigGen(void);
+			virtual std::string devHormiguero(void);
 	};
 
 	typedef std::vector<Hormiga *> ristraPH_t;
@@ -39,7 +39,7 @@ namespace AEDA{
 
 		public:
 			MaquinaV2(int, int);	// altura, anchura, i, j
-			~MaquinaV2();
+			virtual ~MaquinaV2();
 			void cargarHormiga(Hormiga *);
 			void cargarColores(std::istream &);	// pequeña duda... no se puede heredar
 			void desplazamiento(int, int);	// desplazamiento por la rejilla (paralaje)

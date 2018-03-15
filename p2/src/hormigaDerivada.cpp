@@ -33,4 +33,37 @@ namespace AEDA{
 	int DDII::devColor(int color){
 		return (color + 1) % 4;
 	}
+
+	IDDI::IDDI(int i, int j){
+		direccion_ = ARRIBA;
+		ph_.i = i;
+		ph_.j = j;
+	}
+
+	void IDDI::mover(int color){
+		switch (color){
+			case 0:
+				giro(-1);
+				desp(1);
+			break;
+			case 1:
+				giro(1);
+				desp(1);
+			break;
+			case 2:
+				giro(1);
+				desp(1);
+			break;
+			case 3:
+				giro(-1);
+				desp(1);
+			break;
+			default:
+				assert(false);
+		}
+	}
+
+	int IDDI::devColor(int color){
+		return (color + 1) % 4;
+	}
 }

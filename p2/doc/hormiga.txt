@@ -1,14 +1,5 @@
-la rejillas tiene que ser infinita
-puede haber más de un color
-* Máquina
-* Hormiga
-* Rejilla
-Class Hormiga{
-	public:
-	movimiento(ColorCasilla);
+HAZME CASO
 
-	private:
-	Direccion D;
-}
-
-Contador de pasos en -> Máquina
+usa `make help' para ver qué puedes hacer
+a partir de ahí puede usar `make ARGS="lo que te da la gana" [run, depurate]'
+o también `make [run, depurate]'
