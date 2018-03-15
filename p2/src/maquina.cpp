@@ -4,16 +4,22 @@ namespace AEDA{
 	Maquina::Maquina(int altura, int anchura):
 	rej_(new Rejilla(altura, anchura))
 	{
-		vHormigas_.resize(0);
+		vHormigas_.clear();
+	}
+
+	Maquina::Maquina():
+	rej_(new Rejilla(20, 20))
+	{
+		vHormigas_.clear();
 	}
 
 	Maquina::~Maquina(){
 		delete rej_;
 	}
 
-	void Maquina::ponHormiga(std::istream &farchivo){
+	void Maquina::cargarHormigaF(std::istream &farchivo){
 		Hormiga haux;
-		haux.cargarConfHormiga(farchivo);
+		cargarConfHormiga(haux, farchivo);
 		vHormigas_.push_back(haux);
 	}
 

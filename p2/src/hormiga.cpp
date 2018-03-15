@@ -11,21 +11,21 @@ namespace AEDA{
 		ph_ = h.ph_;
 		regla_ = h.regla_;
 	}
-	// REHACER
-	void Hormiga::cargarConfHormiga(std::istream& fis){
-		fis >> ph_.i;
-		fis >> ph_.j;
-		--ph_.i;
-		--ph_.j;
+
+	void cargarConfHormiga(Hormiga &h, std::istream& fis){	// amiga
+		fis >> h.ph_.i;
+		fis >> h.ph_.j;
+		--h.ph_.i;
+		--h.ph_.j;
 		int nReglas;
 		fis >> nReglas;
-		regla_.resize(nReglas);
+		h.regla_.resize(nReglas);
 		for (int i = 0; i < nReglas; i++){
 			int pasos;
 			fis >> pasos;
-			regla_[i].resize(2 * pasos + 2);
-			for (int j = 0; j < regla_[i].size(); j++)
-				fis >> regla_[i][j];
+			h.regla_[i].resize(2 * pasos + 2);
+			for (int j = 0; j < h.regla_[i].size(); j++)
+				fis >> h.regla_[i][j];
 		}
 	}
 

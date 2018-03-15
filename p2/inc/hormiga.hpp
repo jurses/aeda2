@@ -21,25 +21,33 @@ struct Pos{
 };
 
 namespace AEDA{
-	class Maquina;
 	class Hormiga{
 		private:
+			reglas_t regla_;
+			friend void cargarConfHormiga(Hormiga &, std::istream &);	// Hacer método amigo
+
+		protected:
 			int direccion_;	
 			struct Pos ph_;
-			reglas_t regla_;
-			void giro(int);
+			void giro(int);	// 
 			void desp(int);
 
 		public:
 			Hormiga();
 			Hormiga(const Hormiga&);
-			void mover(int);
+			virtual void mover(int);
 			int devPosI(void){ return ph_.i; }
 			int devPosJ(void){ return ph_.j; }
 			int devDir(void){ return direccion_; }
 			void posicionar(int i, int j){ ph_.i = i; ph_.j = j; }
 			const char dirHormiga(void);
-			void cargarConfHormiga(std::istream &);
+			virtual int devColor(int);
+	};
+
+	class DDII : public Hormiga{
+		public:
+			DDII(int, int);
+			void mover(int);
 			int devColor(int);
 	};
 }

@@ -19,11 +19,29 @@ namespace AEDA{
 		private:
 			ristraH_t vHormigas_;
 			Rejilla* rej_;
+
 		public:
 			Maquina(int, int);	// altura, anchura, i, j
+			Maquina();
 			~Maquina();
-			void ponHormiga(std::istream &);	// insertar una nueva hormiga en i, j
+			void cargarHormigaF(std::istream &);	// insertar una nueva hormiga en i, j
 			void cargarColores(std::istream &);
+			void desplazamiento(int, int);	// desplazamiento por la rejilla (paralaje)
+			void sigGen(void);
+			std::string devHormiguero(void);
+	};
+
+	typedef std::vector<Hormiga *> ristraPH_t;
+	class MaquinaV2 : public Maquina{
+		private:
+			ristraPH_t vHormigas_;
+			Rejilla *rej_;
+
+		public:
+			MaquinaV2(int, int);	// altura, anchura, i, j
+			~MaquinaV2();
+			void cargarHormiga(Hormiga *);
+			void cargarColores(std::istream &);	// pequeña duda... no se puede heredar
 			void desplazamiento(int, int);	// desplazamiento por la rejilla (paralaje)
 			void sigGen(void);
 			std::string devHormiguero(void);
