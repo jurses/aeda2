@@ -1,6 +1,0 @@
-*
-!.gitignore
-!*.hpp
-!*.cpp
-!./**/bin
-Makefile
